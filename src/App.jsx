@@ -6,24 +6,51 @@ import React from "react";
 // 3. 값을 수정하려면, setState 함수를 사용해야 한다. (예외 없음)
 // 4. state의 값이 변하면, 영향을 받고있는 component가 re-rendering 된다.
 
-// 5씩 증가하고, 5씩 감소하는 버튼을 만들어서
-// 작동 시키세요! 단, 기존의 버튼을 유지하세요.
-
 class App extends React.Component{
 
     //가장 먼저 실행되는 애
     //자바스크립트 에서 {} == 객체
+
     constructor(props) {
         super(props);
 
         this.state = {
-            num: 1, 
+            num: 0, 
         };
     };
 
     /////// HANDLER ///////
     
     _minusHandler = () => {
+        //alert("-");
+
+        this.setState((prevState) => {
+            const nextValue = prevState.num - 1;
+
+            return {
+                num: nextValue,
+            };
+        });
+
+    };
+
+    _plusHandler = () => {
+        //alert("+");
+
+        this.setState((prevState) => {
+            const nextValue = prevState.num + 1;
+
+            return {
+                num: nextValue,
+            };
+        });
+
+    };
+
+    // 5씩 증가하고, 5씩 감소하는 버튼을 만들어서
+    // 작동 시키세요! 단, 기존의 버튼을 유지하세요.
+
+    _5minusHandler = () => {
         //alert("-");
 
         this.setState((prevState) => {
@@ -36,7 +63,7 @@ class App extends React.Component{
 
     };
 
-    _plusHandler = () => {
+    _5plusHandler = () => {
         //alert("+");
 
         this.setState((prevState) => {
@@ -56,6 +83,8 @@ class App extends React.Component{
 
                 <button onClick={() => this._plusHandler()}>+</button>
                 <button onClick={() => this._minusHandler()}>-</button>
+                <button onClick={() => this._5plusHandler()}>+5</button>
+                <button onClick={() => this._5minusHandler()}>-5</button>
             </div>
         );
     };
